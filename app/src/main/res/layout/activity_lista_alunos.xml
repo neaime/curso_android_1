@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/activity_lista_alunos_fab_novo_aluno"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
+        android:layout_alignEnd="@id/activity_lista_alunos_list_view"
+        android:layout_alignBottom="@id/activity_lista_alunos_list_view"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_action_novo_aluno"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/listagem_de_alunos" />
+
+    <ListView
+        android:id="@+id/activity_lista_alunos_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+</RelativeLayout>
