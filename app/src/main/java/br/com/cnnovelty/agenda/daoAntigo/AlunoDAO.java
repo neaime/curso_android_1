@@ -1,4 +1,4 @@
-package br.com.cnnovelty.agenda.dao;
+package br.com.cnnovelty.agenda.daoAntigo;
 
 import org.jetbrains.annotations.Nullable;
 
