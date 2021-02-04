@@ -9,6 +9,7 @@ import br.com.cnnovelty.agenda.model.Aluno;
 import br.com.cnnovelty.agenda.ui.adapter.ListaAlunosAdapter;
 
 public class BuscaAlunoTask extends AsyncTask<Void, Void, List<Aluno>> {
+
     private final AlunoDAO dao;
     private final ListaAlunosAdapter adapter;
 
@@ -18,8 +19,8 @@ public class BuscaAlunoTask extends AsyncTask<Void, Void, List<Aluno>> {
     }
 
     @Override
-    protected List<Aluno> doInBackground(Void... voids) {
-       return dao.getAlunos();
+    protected List<Aluno> doInBackground(Void[] objects) {
+        return dao.getAlunos();
     }
 
     @Override
@@ -27,5 +28,4 @@ public class BuscaAlunoTask extends AsyncTask<Void, Void, List<Aluno>> {
         super.onPostExecute(todosAlunos);
         adapter.atualiza(todosAlunos);
     }
-
 }

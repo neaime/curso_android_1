@@ -8,28 +8,30 @@ import br.com.cnnovelty.agenda.dao.TelefoneDAO;
 import br.com.cnnovelty.agenda.database.dao.AlunoDAO;
 import br.com.cnnovelty.agenda.model.Aluno;
 import br.com.cnnovelty.agenda.model.Telefone;
+import br.com.cnnovelty.agenda.model.TipoTelefone;
 
-import static br.com.cnnovelty.agenda.model.TipoTelefone.FIXO;
-
-public class EditaAlunoTask extends AsyncTask<Void, Void, Void> {
+public class EditaAlunoTask extends BaseAlunoComTelefoneTask {
 
     private final AlunoDAO alunoDAO;
     private final Aluno aluno;
     private final Telefone telefoneFixo;
     private final Telefone telefoneCelular;
     private final TelefoneDAO telefoneDAO;
-    private List<Telefone> telefonesDoAluno;
-    private final AlunoEditadoListener listener;
+    private final List<Telefone> telefonesDoAluno;
 
-    public EditaAlunoTask(AlunoDAO alunoDAO, Aluno aluno, Telefone telefoneFixo, Telefone telefoneCelular, TelefoneDAO telefoneDAO, List<Telefone> telefonesDoAluno, AlunoEditadoListener listener) {
-//        super(listener);
+    public EditaAlunoTask(AlunoDAO alunoDAO,
+                          Aluno aluno,
+                          Telefone telefoneFixo,
+                          Telefone telefoneCelular,
+                          TelefoneDAO telefoneDAO,
+                          List<Telefone> telefonesDoAluno, FinalizadaListener listener) {
+        super(listener);
         this.alunoDAO = alunoDAO;
         this.aluno = aluno;
         this.telefoneFixo = telefoneFixo;
         this.telefoneCelular = telefoneCelular;
         this.telefoneDAO = telefoneDAO;
         this.telefonesDoAluno = telefonesDoAluno;
-        this.listener = listener;
     }
 
     @Override
@@ -41,15 +43,10 @@ public class EditaAlunoTask extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
-        listener.quandoEditado();
-    }
-
     private void atualizaIdsDosTelefones(Telefone telefoneFixo, Telefone telefoneCelular) {
-        for (Telefone telefone : telefonesDoAluno) {
-            if (telefone.getTipo() == FIXO) {
+        for (Telefone telefone :
+                telefonesDoAluno) {
+            if (telefone.getTipo() == TipoTelefone.FIXO) {
                 telefoneFixo.setId(telefone.getId());
             } else {
                 telefoneCelular.setId(telefone.getId());
@@ -57,13 +54,4 @@ public class EditaAlunoTask extends AsyncTask<Void, Void, Void> {
         }
     }
 
-    protected void vinculaAlunoComTelefone(int alunoId, Telefone... telefones) {
-        for (Telefone telefone : telefones) {
-            telefone.setAlunoId(alunoId);
-        }
-    }
-
-    public interface AlunoEditadoListener {
-        void quandoEditado();
-    }
 }

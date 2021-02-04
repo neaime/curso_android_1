@@ -12,8 +12,9 @@ abstract class BaseAlunoComTelefoneTask extends AsyncTask<Void, Void, Void> {
         this.listener = listener;
     }
 
-    protected void vinculaAlunoComTelefone(int alunoId, Telefone... telefones) {
-        for (Telefone telefone : telefones) {
+    void vinculaAlunoComTelefone(int alunoId, Telefone... telefones) {
+        for (Telefone telefone :
+                telefones) {
             telefone.setAlunoId(alunoId);
         }
     }
