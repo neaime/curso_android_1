@@ -129,7 +129,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     }
 
     private void editaAluno(Telefone telefoneFixo, Telefone telefoneCelular) {
-        new EditaAlunoTask(alunoDAO, aluno, telefoneFixo, telefoneCelular, telefoneDAO, telefonesDoAluno, this::finish);
+        new EditaAlunoTask(alunoDAO, aluno, telefoneFixo, telefoneCelular, telefoneDAO, telefonesDoAluno, this::finish).execute();
     }
 
     private void inicializacaoCampos() {

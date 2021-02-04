@@ -66,6 +66,7 @@ public class ListaAlunosAdapter extends BaseAdapter {
     public void atualiza(List<Aluno> alunos) {
         this.alunos.clear();
         this.alunos.addAll(alunos);
+        notifyDataSetChanged();
     }
 
     public void remove(Aluno aluno) {
