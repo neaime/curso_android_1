@@ -11,15 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cnnovelty.agenda.R;
+import br.com.cnnovelty.agenda.asynctask.BuscaPrimeiroTelefoneDoAlunoTask;
+import br.com.cnnovelty.agenda.dao.TelefoneDAO;
+import br.com.cnnovelty.agenda.database.AgendaDataBase;
 import br.com.cnnovelty.agenda.model.Aluno;
 
 public class ListaAlunosAdapter extends BaseAdapter {
 
     private final List<Aluno> alunos = new ArrayList<>();
     private final Context context;
+    private final TelefoneDAO dao;
 
     public ListaAlunosAdapter(Context context) {
         this.context = context;
+        dao = AgendaDataBase.getInstance(context).getTelefoneDAO();
     }
 
     @Override
@@ -49,7 +54,8 @@ public class ListaAlunosAdapter extends BaseAdapter {
         TextView nome = view.findViewById(R.id.item_aluno_nome);
         nome.setText(aluno.getNomeCompleto() + " " + aluno.dataFormatada());
         TextView telefone = view.findViewById(R.id.item_aluno_telefone);
-        telefone.setText(aluno.getTelefone());
+        new BuscaPrimeiroTelefoneDoAlunoTask(dao, aluno.getId(),  telefoneEncontrado ->
+            telefone.setText(telefoneEncontrado.getNumero())).execute();
     }
 
     private View criaView(ViewGroup viewGroup) {

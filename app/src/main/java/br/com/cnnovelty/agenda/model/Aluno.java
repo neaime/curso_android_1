@@ -1,7 +1,6 @@
 package br.com.cnnovelty.agenda.model;
 
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,16 +15,11 @@ public class Aluno implements Serializable {
     private int id = 0;
     private String nome;
     private String sobrenome;
-    private String telefone;
     private String email;
     private Calendar momentoDeCadastro = Calendar.getInstance();
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public void setEmail(String email) {
@@ -36,10 +30,6 @@ public class Aluno implements Serializable {
 
     public String getNome() {
         return nome;
-    }
-
-    public String getTelefone() {
-        return telefone;
     }
 
     public String getEmail() {
@@ -82,4 +72,5 @@ public class Aluno implements Serializable {
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         return formatador.format(momentoDeCadastro.getTime());
     }
+
 }

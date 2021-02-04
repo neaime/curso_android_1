@@ -11,11 +11,11 @@ import java.util.List;
 import br.com.cnnovelty.agenda.model.Aluno;
 
 @Dao
-public interface RoomAlunoDAO {
+public interface AlunoDAO {
     @Insert
-    void salva(Aluno aluno);
+    Long salva(Aluno aluno);
 
-    @Query("SELECT * FROM Aluno")
+    @Query("SELECT * FROM aluno")
     List<Aluno> getAlunos();
 
     @Delete
