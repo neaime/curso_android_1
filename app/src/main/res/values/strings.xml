@@ -7,4 +7,6 @@
     <string name="remover">Remover</string>
     <string name="listagem_de_alunos">Listagem de Alunos</string>
     <string name="sobrenome">Sobranome</string>
+    <string name="telefone_fixo">Telefone fixo</string>
+    <string name="telefone_celular">Telefone celular</string>
 </resources>

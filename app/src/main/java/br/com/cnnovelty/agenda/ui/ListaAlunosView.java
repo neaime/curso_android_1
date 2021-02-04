@@ -8,22 +8,24 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
+import br.com.cnnovelty.agenda.asynctask.BuscaAlunoTask;
+import br.com.cnnovelty.agenda.asynctask.RemoveAlunoTask;
 import br.com.cnnovelty.agenda.database.AgendaDataBase;
+import br.com.cnnovelty.agenda.database.dao.AlunoDAO;
 import br.com.cnnovelty.agenda.model.Aluno;
-import br.com.cnnovelty.agenda.database.dao.RoomAlunoDAO;
 import br.com.cnnovelty.agenda.ui.adapter.ListaAlunosAdapter;
 
 public class ListaAlunosView {
 
     private final ListaAlunosAdapter adapter;
-    private final RoomAlunoDAO dao;
+    private final AlunoDAO dao;
     private final Context context;
 
     public ListaAlunosView(Context context) {
         this.context = context;
         this.adapter = new ListaAlunosAdapter(context);
         dao = AgendaDataBase.getInstance(context).getRoomAlunoDAO();
-//        this.dao = new AlunoDAO();
+//        this.dao = new AlunoDAOAntigo();
     }
 
     public void confirmaRemocao(@NonNull MenuItem item) {
@@ -41,12 +43,11 @@ public class ListaAlunosView {
     }
 
     public void atualizaAlunos() {
-        adapter.atualiza(dao.getAlunos());
+        new BuscaAlunoTask(dao, adapter).execute();
     }
 
-    public void removeAluno(Aluno alunoEscolhido) {
-        dao.remove(alunoEscolhido);
-        adapter.remove(alunoEscolhido);
+    public void removeAluno(Aluno aluno) {
+        new RemoveAlunoTask(dao, adapter, aluno).execute();
     }
 
     public void configuraAdapter(ListView listaAlunos) {

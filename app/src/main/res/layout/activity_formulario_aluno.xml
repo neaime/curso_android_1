@@ -27,12 +27,20 @@
             android:hint="@string/sobrenome"
             android:importantForAutofill="no" />
 
-        <EditText android:id="@+id/activity_formulario_aluno_telefone"
+        <EditText android:id="@+id/activity_formulario_aluno_telefone_fixo"
             android:layout_width="match_parent"
             android:layout_margin="8dp"
             android:layout_height="wrap_content"
             android:inputType="phone"
-            android:hint="@string/telefone"
+            android:hint="@string/telefone_fixo"
+            android:importantForAutofill="no" />
+
+        <EditText android:id="@+id/activity_formulario_aluno_telefone_celular"
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="@string/telefone_celular"
             android:importantForAutofill="no" />
 
         <EditText android:id="@+id/activity_formulario_aluno_email"

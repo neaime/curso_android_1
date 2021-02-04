@@ -7,7 +7,7 @@ import java.util.List;
 
 import br.com.cnnovelty.agenda.model.Aluno;
 
-public class AlunoDAO {
+public class AlunoDAOAntigo {
 
     private final static List<Aluno> alunos = new ArrayList<>();
     private static int contadorDeIds = 1;
