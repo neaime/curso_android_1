@@ -7,6 +7,7 @@
 - [x] Cadastro de Alunos
 - [x] Edição de Alunos
 - [x] Exclusão de Alunos
+- [x] Persistencia de dados em SQLite
 
 # <h1 align="center">Demonstração</h1>
 
